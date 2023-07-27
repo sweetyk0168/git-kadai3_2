@@ -1,2 +1,9 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>User info</h1>
+<%= form_with model: user.new do |f| %>
+  <h4>name</h4>
+  <%= f.text_field :name %>
+
+  <h4>introduction</h4>
+  <%= f.text_area :introduction %>
+
+<% end %>

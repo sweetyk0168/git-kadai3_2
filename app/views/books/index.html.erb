@@ -1,2 +1,27 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>User info</h1>
+<%= form_with model: Book.new do |f| %>
+  <h4>name</h4>
+
+  <h4>introduction</h4>
+
+<% end %>
+
+<h1>Books</h1>
+<% @books.each do |list| %>
+  <p>Title</p>
+  <span><%= book.title "/books/#{book.id}"%></span>
+
+  <p>Opinion</p>
+  <span><%= book.opinion %></span>
+
+<% end %>
+
+<%= form_with model: Book.new do |f| %>
+  <h1>New book</h1>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :Opinion %>
+  <%= f.submit 'CreateBook' %>
+<% end %>
