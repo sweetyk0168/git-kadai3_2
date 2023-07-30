@@ -1,1 +1,27 @@
-<%#= render 'user/book', book: @book %>
+<%= render 'users/booklist', user: @user %>
+
+<!-- Books -->
+<h1>Books</h1>
+<% @books.each do |book| %>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p>Title</p>
+  <span>
+    <%= link_to book.title, book_path(book.id) %>
+  </span>
+
+  <p>Opinion</p>
+  <span>
+    <%= book.body %>
+  </span>
+<% end %>
+
+<!-- 新規登録フォーム -->
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+  <h1>New book</h1>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'CreateBook' %>
+<% end %>

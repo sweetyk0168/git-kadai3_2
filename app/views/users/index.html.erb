@@ -1,10 +1,9 @@
-<h1>User info</h1>
-<%= @user.each do |user| %>
-  <%= image_tag @user.user.get_profile_image(100,100) %>
+<%= render 'booklist', user: @user %>
+<h1>User</h1>
+<% @user.each do |user| %>
+  <%= image_tag user.get_profile_image(100,100) %>
   <h4>name</h4>
-  <%= f.text_field :name %>
+  <%= user.name %>
 
-  <h4>introduction</h4>
-  <%= f.text_area :introduction %>
-
+  <p><%= link_to "Show", "/books" %></p>
 <% end %>
