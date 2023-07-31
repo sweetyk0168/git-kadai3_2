@@ -1,16 +1,11 @@
-  <h1>User info</h1>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h4>name</h4>
-  <%= @user.name %>
-  <h4>introduction</h4>
-  <%= @user.introduction %>
+<%= render 'users/booklist', user: @user %>
 
 <!-- Books -->
 <h1>Books</h1>
 <% @books.each do |book| %>
   <p>Title</p>
   <span>
-    <%= link_to book.title, edit_book_path(@book.id) %>
+    <%= link_to book.title, book_path(book.id) %>
   </span>
 
   <p>Opinion</p>
