@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  width: 100%;
+}
+
+div {
+  display: block;
+}
+
+.comment-div {
+  margin: 2px;
+}
+
+.comment-button {
+  margin: 10px 0;
+}
