@@ -1,4 +1,6 @@
 <%= render 'booklist', user: @user %>
+<div><%= flash[:notice] %></div>
+
 <h1>User</h1>
 <% @users.each do |user| %>
   <%= image_tag user.get_profile_image(100,100) %>
@@ -6,6 +8,15 @@
   <%= user.name %>
 
   <p><%= link_to "Show", "/books" %></p>
+<% end %>
+
+<% if @newbook.errors.any? %>
+  <%= @newbook.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @newbook.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <!-- 新規登録フォーム -->

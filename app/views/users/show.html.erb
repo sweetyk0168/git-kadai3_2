@@ -1,17 +1,19 @@
 <%= render 'booklist', user: @user %>
+<div><%= flash[:notice] %></div>
 
 <!-- Books -->
 <h1>Books</h1>
-  <%= image_tag @book.user.get_profile_image(100,100) %>
+  <%= image_tag @user.get_profile_image(100,100) %>
+
+  <% @books.each do |book| %>
   <p>Title</p>
   <span>
-    <%= link_to @book.title, book_path(@book.id) %>
+    <%= link_to book.title, book_path(book.id) %>
   </span>
-
-  <p>Opinion</p>
   <span>
-    <%= @book.body %>
+    <%= book.body %>
   </span>
+<% end %>
 
 <!-- 新規登録フォーム -->
 <%= form_with model: @newbook, url: '/books', method: :post do |f| %>

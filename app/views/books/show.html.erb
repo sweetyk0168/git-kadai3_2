@@ -1,5 +1,5 @@
 <%= render 'users/booklist', user: @user %>
-
+<div><%= flash[:notice] %></div>
 <!-- Books -->
 <h2>Book detail</h2>
 <span>
@@ -9,9 +9,10 @@
   <%= @book.body %>
 </span>
   <%= link_to @user.name, user_path(@user.id) %>
-
+<% if @user == current_user %>
   <%= link_to "Edit", edit_book_path(@book.id) %>
   <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
 
 <!-- 新規登録フォーム -->
 <%= form_with model: @newbook, url: '/books', method: :post do |f| %>

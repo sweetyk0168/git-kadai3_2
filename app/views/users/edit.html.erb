@@ -1,10 +1,19 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>User info</h1>
 <%= form_with model: @user do |f| %>
   <label for="inputName">Name</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name" %>
-  <label for="inputName">Image</label>
-  <%= f.file_field :Image, placeholder:"Image", accept: "image/*" %>
+  <label for="inputName">Profile_image</label>
+  <%= f.file_field :profile_image, placeholder:"Image", accept: "image/*" %>
   <label for="inputName">Introduction</label>
-  <%= f.text_area :name, autofocus: true, id:"inputName", placeholder:"Introduction" %>
+  <%= f.text_area :introduction, autofocus: true, id:"inputName", placeholder:"Introduction" %>
   <%= f.submit "Update User" %>
 <% end %>
