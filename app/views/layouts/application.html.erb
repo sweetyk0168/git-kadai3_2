@@ -24,8 +24,8 @@
                 <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
                   <li class="nav-item">
-                    <%= link_to  "/books",  class: "nav-link text-light" do %>
-                      <i class="fa-solid fa-house"></i>  Home
+                    <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+                      <i class="fa-solid fa-house"></i> Home
                     <% end %>
                   </li>
                   <li class="nav-item">
@@ -45,17 +45,17 @@
                   </li>
                   <% else %>
                     <li class="nav-item">
-                      <%= link_to  "/books",  class: "nav-link text-light" do %>
+                      <%= link_to "/",  class: "nav-link text-light" do %>
                         <i class="fa-solid fa-house"></i> Home
                       <% end %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to  "/homes/about",  class: "nav-link text-light" do %>
+                      <%= link_to  "/home/about",  class: "nav-link text-light" do %>
                          <i class="fa-solid fa-link"></i> About
                       <% end %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to new_user_registration_path,  class: "nav-link text-light" do %>
+                      <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
                        <i class="fa-solid fa-user-plus"></i> Sign up
                       <% end %>
                     </li>
@@ -70,7 +70,9 @@
           </div>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+        <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">

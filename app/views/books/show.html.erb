@@ -1,26 +1,52 @@
+ <div><%= flash[:notice] %></div>
+ <div class="container">
+    <div class="row">
+      <div class="col-md-3">
 <%= render 'users/booklist', user: @user %>
-<div><%= flash[:notice] %></div>
-<!-- Books -->
-<h2>Book detail</h2>
-<span>
-  <%= link_to @book.title, book_path(@book.id) %>
-</span>
-<span>
-  <%= @book.body %>
-</span>
-  <%= link_to @user.name, user_path(@user.id) %>
-<% if @user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
+       <!--新規登録フォーム -->
+      <h1>New book</h1>
+      <%= form_with model: @newbook, url: '/books', method: :post do |f| %>
+        <div class="form-group">
+          <label for="inputName">Title</label>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="inputName">Opinion</label>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Create Book', class: "btn btn-success" %>
+        </div>
+      <% end %>
+         </div>
+      <!-- Books -->
+      <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= image_tag @user.get_profile_image(100,100) %><br>
+                <%= link_to @user.name, user_path(@user.id) %>
+              </td>
+              <td>
+                <%= link_to @book.title, book_path(@book.id) %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              <% if @user == current_user %>
+                <td>
+                  <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
+                </td>
+                <td>
+                  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？",  class: "btn tbn-sm btn-danger" %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
 
-<!-- 新規登録フォーム -->
-<%= form_with model: @newbook, url: '/books', method: :post do |f| %>
-  <h1>New book</h1>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'CreateBook' %>
-<% end %>

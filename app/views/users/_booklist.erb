@@ -1,20 +1,16 @@
 <!-- User info -->
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
-      <h1>User info</h1>
+
+      <h2>User info</h2>
       <%= image_tag user.get_profile_image(100,100) %>
       <table class="table">
-       <thead>
-        <tr>
-         <th>name</th>
-         <th>introduction</th>
-        </tr>
-       </thead>
        <tbody>
         <tr>
-         <td><%= user.name %></td>
-         <td><%= user.introduction %></td>
+         <th>name</th>
+         <th><%= user.name %></th>
+        </tr>
+        <tr>
+         <th>introduction</th>
+         <th><%= user.introduction %></th>
         </tr>
        </tbody>
       </table>
@@ -23,8 +19,6 @@
 　      <i class="fas fa-user-cog"></i>
 　     <% end %>
       </div>
-    </div>
-  </div>
-</div>
+
 
 
