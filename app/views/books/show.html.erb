@@ -2,17 +2,17 @@
  <div class="container">
     <div class="row">
       <div class="col-md-3">
-<%= render 'users/booklist', user: @user %>
+　　　<%= render 'users/booklist', user: @user %>
        <!--新規登録フォーム -->
       <h1>New book</h1>
       <% if @book.errors.any? %>
-  <%= @book.errors.count %>errors occurred
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+ 　　　  　 <%= @book.errors.count %>errors occurred
+  　　    <ul>
+       　   <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+      <% end %>
 
       <%= form_with model: @newbook, url: '/books', method: :post do |f| %>
         <div class="form-group">
@@ -35,8 +35,8 @@
           <tbody>
             <tr>
               <td>
-                  <%= link_to (image_tag @user.get_profile_image(100,100)),user_path(@user.id) %><br>
-                  <%= link_to @user.name, user_path(@user.id) %>
+                <%= link_to (image_tag @user.get_profile_image(100,100)),user_path(@user.id) %><br>
+                <%= link_to @user.name, user_path(@user.id) %>
               </td>
               <td>
                 <%= link_to @book.title, book_path(@book.id) %>

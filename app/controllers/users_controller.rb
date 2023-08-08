@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  # def create
-    # @user = User.new(user_params)
-  #   @user = current_user
-  #   if user.save
-  #     flash[:notice] = "you have signed up Successfully"
-  #     redirect_to image_path
-  #   else
-  #     render :new
-  #   end
-  # end
+
 
   def index
     @newbook = Book.new
